@@ -31,7 +31,11 @@ void loop() {
   Serial.print("Pin-A0:");
   Serial.print(analogRead(A0));
   Serial.print(",");
-  Serial.print
+  Serial.print("Pin-A1:");
+  Serial.print(analogRead(A1));
+  Serial.print(",");
+  Serial.print("Pin-A2:");
+  Serial.println(analogRead(A2));
 }
 
 
