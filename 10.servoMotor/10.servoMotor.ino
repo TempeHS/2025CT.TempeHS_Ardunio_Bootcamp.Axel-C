@@ -27,6 +27,7 @@ Servo myservo;
 static unsigned int servoPin = 7;
 static unsigned int potPin = A2;
 
+
 void setup() {
   myservo.attach(servoPin);
 

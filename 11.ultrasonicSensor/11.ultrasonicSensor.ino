@@ -24,12 +24,25 @@
 */
 
 #include "Ultrasonic.h"
+#include <Servo.h>
+Servo myservo;
+Ultrasonic ultraBionicle(5);
+static unsigned int servoPin = 7;
+static unsigned int potPin = A2;
 
-void setup()
-{
-  
+
+void setup() {
+  myservo.attach(servoPin);
+  Serial.begin(9600);
 }
-void loop()
-{
-  
+
+void loop() {
+  Serial.println(ultraBionicle.distanceRead());
+  int val1 = (ultraBionicle.distanceRead());
+  val1 = map(val1, 0, 10, 0, 180);
+  myservo.write(val1);
+
+  int val = analogRead(potPin);
+  val = map(val, 0, 1023, 0, 180);
+  myservo.write(val);
 }
