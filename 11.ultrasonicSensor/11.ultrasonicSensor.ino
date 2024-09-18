@@ -25,24 +25,23 @@
 
 #include "Ultrasonic.h"
 #include <Servo.h>
-Servo myservo;
-Ultrasonic ultraBionicle(5);
+Servo boomgate;
 static unsigned int servoPin = 7;
-static unsigned int potPin = A2;
+Ultrasonic ultraBionicle(5);
+
+unsigned int boomgatestate = LOW;
+
+unsigned long boomgatePreviousMillis = 0;
 
 
 void setup() {
-  myservo.attach(servoPin);
+  boomgate.attach(servoPin);
   Serial.begin(9600);
 }
 
 void loop() {
   Serial.println(ultraBionicle.distanceRead());
   int val1 = (ultraBionicle.distanceRead());
-  val1 = map(val1, 0, 10, 0, 180);
-  myservo.write(val1);
+  
 
-  int val = analogRead(potPin);
-  val = map(val, 0, 1023, 0, 180);
-  myservo.write(val);
 }

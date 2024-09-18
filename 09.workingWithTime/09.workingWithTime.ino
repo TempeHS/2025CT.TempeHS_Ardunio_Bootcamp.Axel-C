@@ -34,8 +34,8 @@ const unsigned long blueLEDinterval = 2000;
 const unsigned long greenLEDinterval = 9000;
 
 void setup() {
-  Serial.println("Debugger");
   Serial.begin(9600);
+  Serial.println("Debugger");
   pinMode(bLED, OUTPUT);
   pinMode(gLED, OUTPUT);
 
@@ -48,12 +48,25 @@ void loop() {
   // the interval at which yu want to blink the LED.
   unsigned long currentMillis = millis();
 
+  if (currentMillis - blueLEDPreviousMillis >= blueLEDinterval)
+  {
+    blueLEDstate = !blueLEDstate;
+    digitalWrite(bLED, blueLEDstate);
+    blueLEDPreviousMillis = currentMillis;
+  }
+
+    if (currentMillis - greenLEDPreviousMillis >= greenLEDinterval)
+  {
+    greenLEDstate = !greenLEDstate;
+    digitalWrite(gLED, greenLEDstate);
+    greenLEDPreviousMillis = currentMillis;
+  }
+
   Serial.print("blueLED:");        
   Serial.print(blueLEDstate);
   Serial.print(",");
   Serial.print("greenLED:");
   Serial.println(greenLEDstate);
 
-  if (currentmillis - blueLEDPreviousMillis >= blueLEDinterval)
 }
 
