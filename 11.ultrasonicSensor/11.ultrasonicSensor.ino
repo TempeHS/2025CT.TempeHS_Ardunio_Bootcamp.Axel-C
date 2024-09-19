@@ -27,21 +27,40 @@
 #include <Servo.h>
 Servo boomgate;
 static unsigned int servoPin = 7;
-Ultrasonic ultraBionicle(5);
+
+static unsigned int LEDpin = 6;
+
+Ultrasonic man(5);
 
 unsigned int boomgatestate = LOW;
 
-unsigned long boomgatePreviousMillis = 0;
+unsigned long boomgatePreviousMillis = 0; 
+
+const unsigned long boomgatePreviousinterval = 5000;
 
 
 void setup() {
   boomgate.attach(servoPin);
   Serial.begin(9600);
+  pinMode (LEDpin, OUTPUT);
 }
 
 void loop() {
-  Serial.println(ultraBionicle.distanceRead());
-  int val1 = (ultraBionicle.distanceRead());
+  unsigned long currentMillis = millis();
+
+  if (man.distanceRead() <= 10)
+  {
+    boomgate.write(90);
+    
+  }
+  if (currentMillis - boomgatePreviousMillis >= boomgatePreviousinterval)
+    {
+      boomgate.write(0);
+      boomgatePreviousMillis = currentMillis;
+    }
+
+  Serial.println(man.distanceRead());
+ 
   
 
 }
