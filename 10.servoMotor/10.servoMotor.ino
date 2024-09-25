@@ -24,17 +24,21 @@
 
 #include <Servo.h>
 Servo myservo;
-static unsigned int servoPin = 7;
-static unsigned int potPin = A2;
-
+static unsigned int servoPin = 2;
+static unsigned int servoPin2 = 3;
+Servo myservo2;
 
 void setup() {
   myservo.attach(servoPin);
-
+  myservo2.attach(servoPin2);
 }
 
 void loop() {
-  int val = analogRead(potPin);
+  myservo.write(90);
+  myservo2.write(90);
+}
+
+/* int val = analogRead(potPin);
   val = map(val, 0, 1023, 0, 180);
   myservo.write(val);
-}
+  */
