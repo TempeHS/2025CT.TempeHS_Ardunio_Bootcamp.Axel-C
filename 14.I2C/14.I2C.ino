@@ -63,6 +63,6 @@ void loop()
   Serial.print("z:");
   Serial.println(Accelerometer.readZ());
  
-  delay(500);
+  delay(200);
  }
 }
