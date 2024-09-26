@@ -24,8 +24,8 @@
 
 #include <Servo.h>
 Servo myservo;
-static unsigned int servoPin = 2;
-static unsigned int servoPin2 = 3;
+static unsigned int servoPin = 4;
+static unsigned int servoPin2 = 5;
 Servo myservo2;
 
 void setup() {
@@ -36,6 +36,7 @@ void setup() {
 void loop() {
   myservo.write(90);
   myservo2.write(90);
+  delay(1000);
 }
 
 /* int val = analogRead(potPin);
