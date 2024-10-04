@@ -28,7 +28,11 @@ void setup() {
 
 // The loop function runs over and over again forever
 void loop() {
-  Serial.print("Pin-A0:");
+  
+}
+
+
+/*Serial.print("Pin-A0:");
   Serial.print(analogRead(A0));
   Serial.print(",");
   Serial.print("Pin-A1:");
@@ -36,6 +40,4 @@ void loop() {
   Serial.print(",");
   Serial.print("Pin-A2:");
   Serial.println(analogRead(A2));
-}
-
-
+  */
